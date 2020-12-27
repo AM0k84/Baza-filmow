@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WSZYSTKIE FILMY</title>
+</head>
+<body>
+    <h2>Lista wszystkich filmów:</h2>
+    {% for film in filmy %}
+        <p>{{ film.tytul }}</p>
+    {% endfor %}
+</body>
+</html>
