@@ -5,9 +5,17 @@
     <title>WSZYSTKIE FILMY</title>
 </head>
 <body>
-    <h2>Lista wszystkich filmów:</h2>
-    {% for film in filmy %}
-        <p>{{ film.tytul }}</p>
-    {% endfor %}
+    {% if  filmy|length == 0 %}
+        <h2>Brak filmów...</h2>
+    {% else %}
+        <h2>Ilość filmów w bazie: {{ filmy|length }}</h2>
+        {% for film in filmy %}
+            <p>{{ film.tytul }}</p>
+        {% endfor %}
+    {% endif %}
+
+
+
+
 </body>
 </html>
