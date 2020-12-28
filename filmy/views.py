@@ -2,8 +2,8 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 
-from .forms import FilmForm, DodatkoweInfoForm
-from .models import Film, DodatkoweInfo
+from .forms import FilmForm, DodatkoweInfoForm, OcenaForm
+from .models import Film, DodatkoweInfo, Ocena
 
 
 # Create your views here.
@@ -32,6 +32,9 @@ def nowy_film(request):
 @login_required
 def edytuj_film(request, id):
     film = get_object_or_404(Film, pk=id)
+    oceny = Ocena.objects.filter(film=film)
+    aktorzy = film.aktorzy.all()
+    
     try:
         dodatkowe = DodatkoweInfo.objects.get(film=film.id)
     except DodatkoweInfo.DoesNotExist:
@@ -39,6 +42,13 @@ def edytuj_film(request, id):
 
     form_film = FilmForm(request.POST or None, request.FILES or None, instance=film)
     form_dodatkowe = DodatkoweInfoForm(request.POST or None, instance=dodatkowe)
+    form_ocena = OcenaForm(request.POST or None)
+
+    if request.method == 'POST':
+        if 'gwiazdki' in request.POST:
+            ocena = form_ocena.save(commit=False)
+            ocena.film = film
+            ocena.save()
 
     if all((form_film.is_valid(), form_dodatkowe.is_valid())):
         film = form_film.save(commit=False)
@@ -46,7 +56,7 @@ def edytuj_film(request, id):
         film.dodatkowe = dodatkowe
         film.save()
         return redirect(wszystkie_filmy)
-    return render(request, 'filmy/film_form.html', {'form': form_film, 'form_dodatkowe': form_dodatkowe, 'nowy': False})
+    return render(request, 'filmy/film_form.html', {'form': form_film, 'form_dodatkowe': form_dodatkowe, 'oceny': oceny, 'form_ocena': form_ocena, 'nowy': False})
 
 @login_required
 def usun_film(request, id):

@@ -40,6 +40,6 @@ class Ocena(models.Model):
 class Aktor(models.Model):
     imie = models.CharField(max_length=40)
     nazwisko = models.CharField(max_length=40)
-    filmy = models.ManyToManyField(Film)
+    filmy = models.ManyToManyField(Film, related_name='aktorzy')
 
 
