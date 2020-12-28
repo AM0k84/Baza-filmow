@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'filmy',
-    'bootstrapform'
+    'bootstrapform',
+    'rest_framework',
+
 ]
 
 MIDDLEWARE = [
