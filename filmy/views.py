@@ -32,3 +32,13 @@ def edytuj_film(request, id):
         form.save()
         return redirect(wszystkie_filmy)
     return render(request, 'filmy/film_form.html', {'form': form})
+
+
+def usun_film(request, id):
+    film = get_object_or_404(Film, pk=id)
+
+    if request.method == 'POST':
+        film.delete()
+        return redirect(wszystkie_filmy)
+
+    return render(request, 'filmy/potwierdz.html', {'film': film})
