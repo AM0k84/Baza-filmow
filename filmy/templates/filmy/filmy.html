@@ -12,7 +12,8 @@
     {% else %}
         <h2>Ilość filmów w bazie: {{ filmy|length }}</h2>
         {% for film in filmy %}
-            <p>{{ film.tytul }}</p>
+            <h3>{{ film }}</h3>
+            <p>{{ film.opis }}</p>
         {% endfor %}
     {% endif %}
 
