@@ -2,26 +2,51 @@
 {% block tytul %} LISTA FILMÓW {% endblock %}
 
 {% block strona %}
-    {%  if user.is_authenticated %}
-        Witaj {{ user.username }}! <br>
-        <a href="{% url 'logout' %}">LOGOUT</a>
-    {% else %}
-        <a href="{% url 'login' %}">LOGIN</a>
-    {% endif %}
+    <div class="jumbotron">
+        {%  if user.is_authenticated %}
+            <h1 class="display-4"> Witaj {{ user.username }}! </h1>
+            <a href="{% url 'logout' %}" class="btn btn-success">LOGOUT <i class="fas fa-sign-out-alt"></i></a>
+        {% else %}
+            <a href="{% url 'login' %}" class="btn btn-success">LOGIN <i class="fas fa-sign-in-alt"></i></a>
+        {% endif %}
+
+    </div>
+
+
+
+
 
     <hr>
 
-    <a href="{% url 'nowy_film' %}">Dodaj film</a>
+    <a href="{% url 'nowy_film' %}">Dodaj film <i class="far fa-plus-square"></i></a>
 
     {% if  filmy|length == 0 %}
         <h2>Brak filmów...</h2>
     {% else %}
         <h2>Ilość filmów w bazie: {{ filmy|length }}</h2>
         {% for film in filmy %}
-            <h3>{{ film }}</h3>
-            <p>{{ film.opis }}</p>
-            <a href="{% url 'edytuj_film' film.id %}">Edytuj</a>
-            <a href="{% url 'usun_film' film.id %}">Usuń</a>
+
+
+            <div class="card" style="width: 26rem;">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-9">
+                            <h5 class="card-title">{{ film }}</h5>
+                        </div>
+
+                        <div class="col-3">
+                            <a href="{% url 'edytuj_film' film.id %}"><i class="fas fa-2x fa-edit"></i></a>
+                            <a href="{% url 'usun_film' film.id %}"><i class="fas fa-2x fa-trash-alt"></i></a>
+                        </div>
+                        </div>
+
+                    </div>
+                <div class="row>"><p class="card-text">{{ film.opis }}</p></div>
+
+
+            </div>
+
+
         {% endfor %}
     {% endif %}
 

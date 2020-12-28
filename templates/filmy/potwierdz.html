@@ -2,10 +2,19 @@
 {% block tytul %} USUŃ {% endblock %}
 
 {% block strona %}
-    <h1>Usunąć film: {{ film.tytul }}?</h1>
-    <form method="POST">
+    <div class="card" style="width: 32rem;">
+        <div class="card-body">
+            <h5 class="card-title">Usunąć film: {{ film.tytul }}?</h5>
+            <form method="POST">
         {% csrf_token %}
-        <button type="submit">Usuń film </button>
+        <button type="submit" class="btn btn-danger">Usuń film </button>
     </form>
+
+        </div>
+    </div>
+
+
+
+
     <a href="{% url 'wszystkie_filmy' %}">Cofnij</a>
 {% endblock %}

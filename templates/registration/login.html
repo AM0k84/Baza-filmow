@@ -4,9 +4,20 @@
 {% block tytul %} LOGIN {% endblock %}
 
 {% block strona %}
-    <form method="POST">
-        {% csrf_token %}
-        {{ form|bootstrap }}
-        <button type="submit">Zaloguj</button>
+
+
+    <div class="card" style="width: 26rem;">
+        <div class="card-body">
+            <h5 class="card-title">Zaloguj</h5>
+            <form method="POST">
+                {% csrf_token %}
+                {{ form|bootstrap }} <br>
+        <button type="submit" class="btn btn-primary">Zaloguj <i class="fas fa-sign-in-alt"></i></button>
     </form>
+
+  </div>
+</div>
+
+
+
 {% endblock %}
