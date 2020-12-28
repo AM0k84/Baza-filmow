@@ -2,3 +2,21 @@ body {
    padding: 2rem;
 
 }
+
+.film-plakat {
+   width: 150px;
+   height: 250px;
+   float: left;
+}
+
+.film-icon {
+   font-size: 1rem;
+}
+
+.opis {
+   margin-left: 15px;
+}
+
+.card {
+   width: 45rem;
+}

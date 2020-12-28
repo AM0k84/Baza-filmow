@@ -27,21 +27,22 @@
         {% for film in filmy %}
 
 
-            <div class="card" style="width: 26rem;">
+            <div class="card" style="width: 42rem;">
                 <div class="card-body">
+                    <img src="/media/{{ film.plakat }}" class="film-plakat">
                     <div class="row">
                         <div class="col-9">
                             <h5 class="card-title">{{ film }}</h5>
                         </div>
 
                         <div class="col-3">
-                            <a href="{% url 'edytuj_film' film.id %}"><i class="fas fa-2x fa-edit"></i></a>
-                            <a href="{% url 'usun_film' film.id %}"><i class="fas fa-2x fa-trash-alt"></i></a>
+                            <a href="{% url 'edytuj_film' film.id %}"><i class="fas fa-2x fa-edit film-icon"></i></a>
+                            <a href="{% url 'usun_film' film.id %}"><i class="fas fa-2x fa-trash-alt film-icon"></i></a>
                         </div>
                         </div>
 
                     </div>
-                <div class="row>"><p class="card-text">{{ film.opis }}</p></div>
+                <div class="row>"><p class="card-text opis">{{ film.opis }}</p></div>
 
 
             </div>
