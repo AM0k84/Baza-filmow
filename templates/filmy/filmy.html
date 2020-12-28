@@ -8,6 +8,15 @@
 </head>
 <body>
 
+    {%  if user.is_authenticated %}
+        Witaj {{ user.username }}! <br>
+        <a href="{% url 'logout' %}">LOGOUT</a>
+    {% else %}
+        <a href="{% url 'login' %}">LOGIN</a>
+    {% endif %}
+
+    <hr>
+
     <a href="{% url 'nowy_film' %}">Dodaj film</a>
 
     {% if  filmy|length == 0 %}
