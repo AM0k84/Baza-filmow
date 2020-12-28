@@ -1,13 +1,7 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link rel="stylesheet" href="{% static 'style.css' %}">
-    <meta charset="UTF-8">
-    <title>WSZYSTKIE FILMY</title>
-</head>
-<body>
+{% extends 'glowny.html' %}
+{% block tytul %} LISTA FILMÓW {% endblock %}
 
+{% block strona %}
     {%  if user.is_authenticated %}
         Witaj {{ user.username }}! <br>
         <a href="{% url 'logout' %}">LOGOUT</a>
@@ -31,8 +25,4 @@
         {% endfor %}
     {% endif %}
 
-
-
-
-</body>
-</html>
+{% endblock %}

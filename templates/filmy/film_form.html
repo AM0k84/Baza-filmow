@@ -1,15 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>DODAJ FILM</title>
-</head>
-<body>
+{% extends 'glowny.html' %}
+{% load bootstrap %}
+{% block tytul %} Film Form {% endblock %}
+
+{% block strona %}
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form }}
+        {{ form|bootstrap }}
         <button type="submit">DODAJ</button>
     </form>
     <a href="{% url 'wszystkie_filmy' %}">Cofnij</a>
-</body>
-</html>
+{% endblock %}

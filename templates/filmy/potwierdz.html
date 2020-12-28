@@ -1,15 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>USUŃ FILM</title>
-</head>
-<body>
+{% extends 'glowny.html' %}
+{% block tytul %} USUŃ {% endblock %}
+
+{% block strona %}
     <h1>Usunąć film: {{ film.tytul }}?</h1>
     <form method="POST">
         {% csrf_token %}
         <button type="submit">Usuń film </button>
     </form>
     <a href="{% url 'wszystkie_filmy' %}">Cofnij</a>
-</body>
-</html>
+{% endblock %}
